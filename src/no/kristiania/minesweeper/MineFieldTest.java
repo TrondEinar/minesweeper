@@ -11,7 +11,7 @@ public class MineFieldTest {
         assertArrayEquals(new String[] {"000" , "000"}, displayMineField(new String[] {"..." , "..."}));
     }
 
-    private Object displayMineField(String[] strings) {
+    private String[] displayMineField(String[] input) {
         return new String[0];
     }
 }
