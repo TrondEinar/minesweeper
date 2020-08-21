@@ -1,17 +1,18 @@
 package no.kristiania.minesweeper;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class MineFieldTest {
 
     @Test
-    void itShowsEmptyMineField(){
-        assertArrayEquals(new String[] {"000" , "000"}, displayMineField(new String[] {"..." , "..."}));
+    void itShowsEmptyMineFields(){
+    assertArrayEquals(new String[] { "000", "000" }, displayMinefield(new String[] {"...", "..."}));
     }
 
-    private String[] displayMineField(String[] input) {
+    private String[] displayMinefield(String[] input) {
         return new String[0];
     }
+
 }
