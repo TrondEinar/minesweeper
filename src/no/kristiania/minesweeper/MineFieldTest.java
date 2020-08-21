@@ -11,8 +11,15 @@ public class MineFieldTest {
     assertArrayEquals(new String[] { "000", "000" }, displayMinefield(new String[] {"...", "..."}));
     }
 
+    @Test
+    void isShowsCorrectNumberOfRows() {
+        assertArrayEquals(new String[] {"000" , "000" , "000"} ,
+                displayMinefield(new String[] {"..." , "..." , "..."}));
+    }
     private String[] displayMinefield(String[] input) {
-        return new String[0];
+        return new String[] {
+                "000" , "000"
+        };
     }
 
 }
