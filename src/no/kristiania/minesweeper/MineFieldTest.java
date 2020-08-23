@@ -1,5 +1,6 @@
 package no.kristiania.minesweeper;
 
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -7,31 +8,68 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class MineFieldTest {
 
     @Test
-    void itShowsEmptyMineFields(){
-    assertArrayEquals(new String[] { "000", "000" }, displayMinefield(new String[] {"...", "..."}));
+    void itShowsEmptyMineField() {
+        assertArrayEquals(new String[] { "000", "000" }, displayMinefield(new String[] {"...", "..." }));
     }
 
     @Test
-    void itShowsCorrectNumberOfRows() {
-        assertArrayEquals(new String[] {"000" , "000" , "000"} ,
-                displayMinefield(new String[] {"..." , "..." , "..."}));
-    }
-
-    @Test
-    void itShowsCorrectNumberOfColumns() {
+    void isShowsCorrectNumberOfRows() {
         assertArrayEquals(
-                new String[] { "0000" },
-                displayMinefield(new String[] {"...."})
+                new String[] { "000", "000", "000" },
+                displayMinefield(new String[] { "...", "...", "..." })
+        );
+    }
+
+    @Test
+    void isShowsCorrectNumberOfColumns() {
+        assertArrayEquals(
+                new String[] { "0000"},
+                displayMinefield(new String[] { "...."})
+        );
+    }
+
+    @Test
+    void itShowsMines() {
+        assertArrayEquals(
+                new String[] { "***" },
+                displayMinefield(new String[] { "***" })
+        );
+    }
+
+    @Test
+    void itShowsHintRightOfMine() {
+        assertArrayEquals(
+                new String[] { "01*10" },
+                displayMinefield(new String[] { "..*.." })
+        );
+    }
+
+    @Test
+    void itShowsHintOnColOfMine() {
+        assertArrayEquals(
+                new String[] { "0", "1", "*", "1", "0" },
+                displayMinefield(new String[] { ".", ".", "*", ".", "." })
+        );
+    }
+
+    @Test
+    void itShowsHintAroundMine() {
+        assertArrayEquals(
+                new String[] { "111", "1*1", "111" },
+                displayMinefield(new String[] { "...", ".*.", "..." })
+        );
+    }
+
+    @Test
+    void itCountsMineAroundCell() {
+        assertArrayEquals(
+                new String[] { "***", "*8*", "***" },
+                displayMinefield(new String[] { "***", "*.*", "***" })
         );
     }
 
     private String[] displayMinefield(String[] input) {
-        String[] result = new String [input.length];
-        for (int i = 0; i < input.length; i++) {
-            result[i] = "000";
-            
-        }
-        return result;
+        return new MineField(input).displayMinefield();
     }
 
 }
